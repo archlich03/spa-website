@@ -5,6 +5,7 @@
 
 @layer base {
     body {
-        font-family: "Ubuntu", serif;    
+        font-family: "Ubuntu", serif;
+        background: rgb(39 39 42 / var(--tw-bg-opacity, 1));
     }
 }
