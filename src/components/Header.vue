@@ -36,7 +36,7 @@ function closeNav() {
     </div>
     <span
         v-if="!isOpen"
-        class="lg:hidden fixed z-20 top-4 left-4 text-white text-3xl cursor-pointer"
+        class="lg:hidden fixed z-20 top-4 left-4 text-white text-3xl cursor-pointer w-full bg-zinc-900 ml-[-16px] mt-[-16px] p-3"
         @click="openNav"
         >
         &#9776; open

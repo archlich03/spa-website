@@ -25,7 +25,7 @@ function setActiveTab(tab) {
                 </h1>
             </div>
         </div>
-        <div role="tablist" class="flex space-x-4 justify-center my-8">
+        <div role="tablist" class="flex flex-wrap space-x-4 justify-center my-8 px-4">
             <a role="tab" :class="{ 'text-cyan-500 border-b-2 border-cyan-500 pb-1 cursor-pointer': activeTab === 'Introduction', 'text-gray-500 hover:text-cyan-500 transition-colors duration-300 cursor-pointer': activeTab !== 'Introduction' }" @click="setActiveTab('Introduction')">Introduction</a>
             <a role="tab" :class="{ 'text-cyan-500 border-b-2 border-cyan-500 pb-1 cursor-pointer': activeTab === 'Experience', 'text-gray-500 hover:text-cyan-500 transition-colors duration-300 cursor-pointer': activeTab !== 'Experience' }" @click="setActiveTab('Experience')">Experience</a>
             <a role="tab" :class="{ 'text-cyan-500 border-b-2 border-cyan-500 pb-1 cursor-pointer': activeTab === 'Certifications', 'text-gray-500 hover:text-cyan-500 transition-colors duration-300 cursor-pointer': activeTab !== 'Certifications' }" @click="setActiveTab('Certifications')">Certifications</a>
@@ -47,3 +47,4 @@ function setActiveTab(tab) {
         </div>
     </Header>
 </template>
+
