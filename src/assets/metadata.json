@@ -9,17 +9,17 @@
                 "image": "https://picsum.photos/200/300",
                 "created_at": "Jan 2025"
             },
-            "keywords": ["hello", "world"]
+            "keywords": ["LDAP", "Matrix", "Synapse", "PHPLDAPAdmin", "NGINX", "Docker"]
         },
         {
-            "id": "foo-bar",
+            "id": "ansible-vm-hardening",
             "seo": {
-                "title": "Foo Bar",
+                "title": "Hardening VMs with ansible",
                 "description": "This is another sample article",
                 "image": "https://picsum.photos/200/301",
                 "created_at": "Jan 2025"
             },
-            "keywords": ["foo", "bar"]
+            "keywords": ["Debian", "Ansible", "VM", "Hardening"]
         }
     ]
 }
