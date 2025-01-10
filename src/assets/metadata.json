@@ -14,7 +14,7 @@
         {
             "id": "ansible-vm-hardening",
             "seo": {
-                "title": "Hardening VMs with ansible",
+                "title": "Hardening VMs with Ansible",
                 "description": "This is another sample article",
                 "image": "https://picsum.photos/200/301",
                 "created_at": "Jan 2025"
