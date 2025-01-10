@@ -1,0 +1,25 @@
+{
+    "count": 2,
+    "articles": [
+        {
+            "id": "ldap-matrix",
+            "seo": {
+                "title": "LDAP + Matrix setup",
+                "description": "This is a sample article",
+                "image": "https://picsum.photos/200/300",
+                "created_at": "Jan 2025"
+            },
+            "keywords": ["hello", "world"]
+        },
+        {
+            "id": "foo-bar",
+            "seo": {
+                "title": "Foo Bar",
+                "description": "This is another sample article",
+                "image": "https://picsum.photos/200/301",
+                "created_at": "Jan 2025"
+            },
+            "keywords": ["foo", "bar"]
+        }
+    ]
+}
