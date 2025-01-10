@@ -4,6 +4,7 @@ import Header from '@/components/Header.vue';
 import AboutExperience from '@/components/AboutExperience.vue';
 import AboutCertifications from '@/components/AboutCertifications.vue';
 import AboutEducation from '@/components/AboutEducation.vue';
+import Footer from '@/components/Footer.vue';
 
 onMounted(() => {
     document.title = "About me | Rokas Stankūnas";
@@ -39,6 +40,7 @@ function setActiveTab(tab) {
         <div v-if="activeTab === 'Education'" role="tabpanel" class="mt-8 space-y-4">
             <AboutEducation />
         </div>
+        <Footer />
     </Header>
 </template>
 

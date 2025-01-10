@@ -25,7 +25,7 @@ function closeNav() {
                 </ul>
             </div>
         </div>
-        <div class="m-4 lg:m-4" :class="{'mt-16 lg:mt-6': true}">
+        <div class="m-4 lg:m-4 mb-0 lg:mb-0" :class="{'mt-16 mb-0 lg:mt-6 lg:mb-0': true}">
             <slot></slot>
         </div>
     </div>
