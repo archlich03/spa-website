@@ -1,6 +1,6 @@
 <script setup>
-function getPresentMonths() {
-    const startDate = new Date('2024-10-01T00:00:00.000Z');
+function getPresentMonths(startDateString) {
+    const startDate = new Date(startDateString);
     const endDate = new Date();
     const diffTime = endDate.getTime() - startDate.getTime();
     let diffMonths = Math.ceil(diffTime / (30 * 24 * 60 * 60 * 1000));
@@ -42,13 +42,6 @@ function getPresentMonths() {
                         >
                         Hostinger</a> 
                         · Part time<br><i>Oct 2023 - Jun 2024 · 9 mos</i></p>
-                <ul class="list-disc list-inside">
-                    <li>"A" grade specialist for 6 months in a row;</li>
-                    <li>Provided support for the Hostinger/Zyro Web Builder product;</li>
-                    <li>Taught clients the basics of SEO;</li>
-                    <li>Leading shifts (delegating tasks, answering queries about product from other teams);</li>
-                    <li>Provided constant feedback to product team about most requested features for the product.</li>
-                </ul>
             </div>
         </div>
         <hr />
@@ -78,11 +71,6 @@ function getPresentMonths() {
                         >
                         Teltonika Telematics</a>
                         · Internship<br><i>Jul 2024 - Aug 2024 · 2 mos</i></p>
-                <ul class="list-disc list-inside">
-                    <li>Prepared new workstations by installing and configuring operating systems, applications;</li>
-                    <li>Resolved basic hardware and software queries;</li>
-                    <li>Reviewed and provided suggestions for company policies, ensuring accurate translations and optimal document layout.</li>
-                </ul>
             </div>
         </div>
         <hr />
@@ -111,19 +99,7 @@ function getPresentMonths() {
                         class="font-medium hover:underline"
                         >
                         Vilnius University</a> 
-                        · Part time<br><i>Oct 2024 - Present · {{ getPresentMonths() }}</i></p>
-                <ul class="list-disc list-inside">
-                    <li>Implementation of tasks in project
-                        <a 
-                            href="https://www.knf.vu.lt/en/gaiso"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="hover:underline"
-                            >
-                            "Research on Cyber Resilience Through Application of Generative Artificial Intelligence in Chief Information Security Officer Operations"
-                        </a>
-                    </li>
-                </ul>
+                        · Part time<br><i>Oct 2024 - Present · {{ getPresentMonths('2024-10-01T00:00:00.000Z') }}</i></p>
             </div>
         </div>
     </li>
