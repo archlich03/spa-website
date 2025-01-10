@@ -1,6 +1,6 @@
 <script setup>
-function getPresentMonths() {
-    const startDate = new Date('2024-10-01T00:00:00.000Z');
+function getPresentMonths(startDateString) {
+    const startDate = new Date(startDateString);
     const endDate = new Date();
     const diffTime = endDate.getTime() - startDate.getTime();
     let diffMonths = Math.ceil(diffTime / (30 * 24 * 60 * 60 * 1000));
@@ -99,7 +99,7 @@ function getPresentMonths() {
                         class="font-medium hover:underline"
                         >
                         Vilnius University</a> 
-                        · Part time<br><i>Oct 2024 - Present · {{ getPresentMonths() }}</i></p>
+                        · Part time<br><i>Oct 2024 - Present · {{ getPresentMonths('2024-10-01T00:00:00.000Z') }}</i></p>
             </div>
         </div>
     </li>
