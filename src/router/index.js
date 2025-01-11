@@ -17,11 +17,6 @@ const router = createRouter({
       component: AboutView,
     },
     {
-      path: '/contact',
-      name: 'contact',
-      component: ProjectsView,
-    },
-    {
       path: '/projects',
       name: 'projects',
       component: ProjectsView,
