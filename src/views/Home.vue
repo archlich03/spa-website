@@ -1,9 +1,25 @@
 <script setup>
 import { onMounted } from 'vue';
-import HomeButtons from '@/components/HomeButtons.vue'
+import HomeButtons from '@/components/HomeButtons.vue';
 
 onMounted(() => {
     document.title = "Home | Rokas Stankūnas";
+    
+    const descriptionMetaTag = document.querySelector('meta[name="description"]');
+    const keywordsMetaTag = document.querySelector('meta[name="keywords"]');
+    const canonicalLinkTag = document.querySelector('link[rel="canonical"]');
+
+    if (descriptionMetaTag) {
+        descriptionMetaTag.setAttribute('content', "Welcome to my small corner of the internet!");
+    }
+
+    if (keywordsMetaTag) {
+        keywordsMetaTag.setAttribute('content', "website, portfolio");
+    }
+
+    if (canonicalLinkTag) {
+        canonicalLinkTag.setAttribute('href', "https://stankunas.me/");
+    }
 });
 </script>
 

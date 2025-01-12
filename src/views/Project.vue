@@ -38,6 +38,22 @@ onMounted(async () => {
     } else {
         router.push('/404');
     }
+
+    const descriptionMetaTag = document.querySelector('meta[name="description"]');
+    const keywordsMetaTag = document.querySelector('meta[name="keywords"]');
+    const canonicalLinkTag = document.querySelector('link[rel="canonical"]');
+
+    if (descriptionMetaTag) {
+        descriptionMetaTag.setAttribute('content', `${articles[articleId].seo.description}`);
+    }
+
+    if (keywordsMetaTag) {
+        keywordsMetaTag.setAttribute('content', articles[articleId].seo.keywords.join(', '));
+    }
+
+    if (canonicalLinkTag) {
+        canonicalLinkTag.setAttribute('href', `https://stankunas.me/project/${articles[articleId].id}`);
+    }
 });
 </script>
 
