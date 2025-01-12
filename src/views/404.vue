@@ -1,17 +1,16 @@
 <script setup>
 import { onMounted } from 'vue';
-import HomeButtons from '@/components/HomeButtons.vue'
 
 onMounted(() => {
-    document.title = "Home | Rokas Stankūnas";
+    document.title = "404 | Rokas Stankūnas";
 });
 </script>
 
 <template>
     <div class="container mx-auto max-w-[700px] flex flex-col items-center justify-center min-h-screen space-y-4">
         <span class="text-center text-white text-bold text-6xl">
-            <h1>Hello, I'm Rokas.</h1>Welcome to my small corner of the internet!
+            <h1>404 Page not found</h1>Click <RouterLink class="text-cyan-500" to="/">here</RouterLink> to go back!
         </span>
-        <HomeButtons />
+        
     </div>
 </template>

@@ -26,9 +26,9 @@ onMounted(() => {
                     <h2 class="card-title">{{ article.seo.title }}</h2>
                     <h3 class="card-subtitle">{{ article.seo.description }}</h3>
                     <p class="italic">{{ article.seo.created_at }}</p>
-                    <a :href="`/project/${article.id}`" rel="noopener noreferrer" class="btn btn-outline btn-info">
+                    <RouterLink :to="`/project/${article.id}`" rel="noopener noreferrer" class="btn btn-outline btn-info">
                         More Details
-                    </a>
+                    </RouterLink>
                 </div>
             </div>
         </div>
