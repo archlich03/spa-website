@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import Header from '@/components/Header.vue';
 import AboutExperience from '@/components/AboutExperience.vue';
 import AboutCertifications from '@/components/AboutCertifications.vue';
@@ -8,6 +8,20 @@ import Footer from '@/components/Footer.vue';
 
 onMounted(() => {
     document.title = "About me | Rokas Stankūnas";
+    
+    const robotsMetaTag = document.querySelector('meta[name="robots"]');
+
+    if (robotsMetaTag) {
+        robotsMetaTag.setAttribute('content', "noindex, nofollow");
+    }
+});
+
+onUnmounted(() => {
+    const robotsMetaTag = document.querySelector('meta[name="robots"]');
+
+    if (robotsMetaTag) {
+        robotsMetaTag.setAttribute('content', "index, follow");
+    }
 });
 
 const activeTab = ref('Experience');

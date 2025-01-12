@@ -5,6 +5,9 @@ import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import articleData from '../assets/metadata.json';
 import MarkdownIt from 'markdown-it';
+import markdownItAnchor from 'markdown-it-anchor';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/monokai-sublime.min.css';
 
 const route = useRoute();
 const router = useRouter();
@@ -17,7 +20,21 @@ const articleExists = computed(() => {
     return articles.some(article => article.id === articleIdName);
 });
 
-const md = MarkdownIt();
+const md = MarkdownIt({
+    highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+            try {
+                return hljs.highlight(str, { language: lang }).value;
+            } catch (__) {}
+        }
+        return ''; // use external default escaping
+    }
+}).use(markdownItAnchor, {
+    permalink: true,
+    permalinkBefore: true,
+    permalinkSymbol: '#',
+    level: [2, 3, 4, 5, 6] // Skip H1 for anchors
+});
 
 const articleContent = ref('');
 
@@ -63,3 +80,4 @@ onMounted(async () => {
         <Footer></Footer>
     </Header>
 </template>
+
