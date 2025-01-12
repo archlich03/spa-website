@@ -6,23 +6,13 @@
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://stankunas.me/contact</loc>
-    <lastmod>2025-01-10</lastmod>
-    <priority>0.1</priority>
-  </url>
-  <url>
     <loc>https://stankunas.me/projects</loc>
-    <lastmod>2025-01-10</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2025-01-12</lastmod>
+    <priority>1.00</priority>
   </url>
   <url>
     <loc>https://stankunas.me/project/ldap-matrix</loc>
-    <lastmod>2025-01-10</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://stankunas.me/project/ansible-vm-hardening</loc>
-    <lastmod>2025-01-10</lastmod>
+    <lastmod>2024-01-12</lastmod>
     <priority>0.6</priority>
   </url>
 </urlset>

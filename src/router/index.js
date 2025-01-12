@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import AboutView from '@/views/About.vue'
 import HomeView from '@/views/Home.vue'
 import ProjectsView from '@/views/Projects.vue'
+import ProjectView from '@/views/Project.vue'
+import Error404View from '@/views/404.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,11 +19,6 @@ const router = createRouter({
       component: AboutView,
     },
     {
-      path: '/contact',
-      name: 'contact',
-      component: ProjectsView,
-    },
-    {
       path: '/projects',
       name: 'projects',
       component: ProjectsView,
@@ -29,13 +26,23 @@ const router = createRouter({
     {
       path: '/project/:name',
       name: 'project',
-      component: ProjectsView,
+      component: ProjectView,
       props: true,
     },
     {
       path: '/project',
       redirect: '/projects',
     },
+    {
+      path: '/404',
+      name: 'error404',
+      component: Error404View,
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'catchAll',
+      redirect: '/404',
+    }
   ],
 })
 

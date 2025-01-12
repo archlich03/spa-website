@@ -4,12 +4,28 @@ import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue';
 import articleData from '../assets/metadata.json'
 
-const articleCount = ref(articleData.count);
 const articles = ref(articleData.articles);
 
 onMounted(() => {
     document.title = "Projects | Rokas Stankūnas";
+
+    const descriptionMetaTag = document.querySelector('meta[name="description"]');
+    const keywordsMetaTag = document.querySelector('meta[name="keywords"]');
+    const canonicalLinkTag = document.querySelector('link[rel="canonical"]');
+
+    if (descriptionMetaTag) {
+        descriptionMetaTag.setAttribute('content', "This pages explores all projects I've worked on.");
+    }
+
+    if (keywordsMetaTag) {
+        keywordsMetaTag.setAttribute('content', "website, portfolio");
+    }
+
+    if (canonicalLinkTag) {
+        canonicalLinkTag.setAttribute('href', "https://stankunas.me/projects");
+    }
 });
+
 </script>
 
 <template>
@@ -26,13 +42,13 @@ onMounted(() => {
                     <h2 class="card-title">{{ article.seo.title }}</h2>
                     <h3 class="card-subtitle">{{ article.seo.description }}</h3>
                     <p class="italic">{{ article.seo.created_at }}</p>
-                    <a :href="`/project/${article.id}`" rel="noopener noreferrer" class="btn btn-outline btn-info">
+                    <RouterLink :to="`/project/${article.id}`" rel="noopener noreferrer" class="btn btn-outline btn-info">
                         More Details
-                    </a>
+                    </RouterLink>
                 </div>
             </div>
         </div>
-        <Footer />
+        <Footer></Footer>
     </Header>
 </template>
 

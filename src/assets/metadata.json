@@ -4,22 +4,12 @@
         {
             "id": "ldap-matrix",
             "seo": {
-                "title": "LDAP + Matrix setup",
-                "description": "This is a sample article",
+                "title": "Private communication setup with LDAP and Matrix",
+                "description": "This article provides a method on how to launch a Matrix server (Synapse) and integrate it with LDAP.",
                 "image": "https://picsum.photos/200/300",
-                "created_at": "Jan 2025"
-            },
-            "keywords": ["LDAP", "Matrix", "Synapse", "PHPLDAPAdmin", "NGINX", "Docker"]
-        },
-        {
-            "id": "ansible-vm-hardening",
-            "seo": {
-                "title": "Hardening VMs with Ansible",
-                "description": "This is another sample article",
-                "image": "https://picsum.photos/200/301",
-                "created_at": "Jan 2025"
-            },
-            "keywords": ["Debian", "Ansible", "VM", "Hardening"]
+                "created_at": "Jan 2025",
+                "keywords": ["Matrix", "Synapse", "LDAP", "self-hosted", "private messaging", "end-to-end encryption"]
+            }
         }
     ]
 }
