@@ -27,7 +27,7 @@ async function loadArticle() {
         const module = await import(`../assets/articles/${article.id}.md?raw`);
         return md.render(module.default);
     }
-    return '<p>404 not found</p>';
+    return false;
 }
 
 onMounted(async () => {
@@ -35,6 +35,8 @@ onMounted(async () => {
 
     if (articleExists.value) {
         document.title = `${articles[articleId].seo.title} | Rokas Stankūnas`;
+    } else {
+        router.push('/404');
     }
 });
 </script>

@@ -32,6 +32,16 @@ const router = createRouter({
     {
       path: '/project',
       redirect: '/projects',
+    },
+    {
+      path: '/404',
+      name: 'error404',
+      component: Error404View,
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'catchAll',
+      redirect: '/404',
     }
   ],
 })
