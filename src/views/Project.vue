@@ -30,11 +30,12 @@ const md = MarkdownIt({
         return ''; // use external default escaping
     }
 }).use(markdownItAnchor, {
-    permalink: true,
-    permalinkBefore: true,
-    permalinkSymbol: '#',
-    level: [2, 3, 4, 5, 6] // Skip H1 for anchors
-});
+    level: 2,
+    permalink: markdownItAnchor.permalink.linkInsideHeader({
+        symbol: `<span aria-hidden="true">#</span>`,
+        placement: 'before'
+    })
+})
 
 const articleContent = ref('');
 
