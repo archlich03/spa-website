@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AboutView from '@/views/About.vue'
 import HomeView from '@/views/Home.vue'
-import ProjectsView from '@/views/Projects.vue'
-import ProjectView from '@/views/Project.vue'
+import ProjectsView from '@/views/Articles.vue'
+import ArticleView from '@/views/Article.vue'
 import Error404View from '@/views/404.vue'
 
 const router = createRouter({
@@ -19,19 +19,19 @@ const router = createRouter({
       component: AboutView,
     },
     {
-      path: '/projects',
-      name: 'projects',
+      path: '/articles',
+      name: 'articles',
       component: ProjectsView,
     },
     {
-      path: '/project/:name',
-      name: 'project',
-      component: ProjectView,
+      path: '/article/:name',
+      name: 'article',
+      component: ArticleView,
       props: true,
     },
     {
-      path: '/project',
-      redirect: '/projects',
+      path: '/article',
+      redirect: '/articles',
     },
     {
       path: '/404',
