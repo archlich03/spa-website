@@ -1,14 +1,23 @@
 {
-    "count": 2,
     "articles": [
+        {
+            "id": "matrix-federation-tutorial",
+            "seo": {
+                "title": "Setting up (private) federation for Matrix",
+                "description": "This article shows how to allow your Synapse instance to interact with other servers (and how to restrict federation to only a few other instances).",
+                "image": "../images/federation.png",
+                "created_at": "26.01.2025",
+                "keywords": ["Matrix", "Synapse", "Self-hosted", "Private messaging", "Federation", "NGINX"]
+            }
+        },
         {
             "id": "ldap-matrix",
             "seo": {
                 "title": "Private communication setup with LDAP and Matrix",
                 "description": "This article provides a method on how to launch a Matrix server (Synapse) and integrate it with LDAP.",
-                "image": "https://picsum.photos/200/300",
-                "created_at": "Jan 2025",
-                "keywords": ["Matrix", "Synapse", "LDAP", "self-hosted", "private messaging", "end-to-end encryption"]
+                "image": "../images/cybersecurity1.jpg",
+                "created_at": "12.01.2025",
+                "keywords": ["Matrix", "Synapse", "LDAP", "Self-hosted", "Private messaging", "End-to-end encryption"]
             }
         }
     ]
