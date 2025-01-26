@@ -1,5 +1,3 @@
-# Private communication setup with LDAP and Matrix
-
 ## Introduction
 
 Some time ago, I needed to explore how to set up a private communication environment. Convieniently I stumbled upon the [Matrix protocol](https://matrix.org/). This article will provide a method on how to launch a Matrix server (Synapse) and integrate it with LDAP.
@@ -115,7 +113,7 @@ nginx:
     - phpldapadmin
 ```
 And lastly, we need to create the following NGINX configuration file. The admin endpoint is blocked for security reasons. To execute administration commands, it must be done from the VPS itself.
-```conf
+```nginx
 server {
   listen 80;
   server_name matrix.example.com;
@@ -140,4 +138,4 @@ server {
 
 ## Conclusion
 
-And that's it! The only thing left to do for this configuration would be to set up SSL certificates for your traffic to be fully enrypted. You now have a private Matrix server with LDAP authentication! I hope this article has been useful to you. If you have any questions or suggestions, please don't hesitate to contact me. I look forward to hearing from you!
+And that's it! The only thing left to do for this configuration would be to set up SSL certificates for your traffic to be fully encrypted. You now have a private Matrix server with LDAP authentication! I hope this article has been useful to you. If you have any questions or suggestions, please don't hesitate to contact me. I look forward to hearing from you!

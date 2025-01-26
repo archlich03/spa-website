@@ -38,10 +38,18 @@ const md = MarkdownIt({
 })
 
 const articleContent = ref('');
+const articleTitle = ref('');
+const articleImage = ref('');
+const articleKeywords = ref([]);
+const articleCreatedAt = ref('');
 
 async function loadArticle() {
     if (articleExists.value) {
         const article = articles.find(article => article.id === articleIdName);
+        articleTitle.value = article.seo.title;
+        articleImage.value = article.seo.image;
+        articleKeywords.value = article.seo.keywords;
+        articleCreatedAt.value = article.seo.created_at;
         const module = await import(`../assets/articles/${article.id}.md?raw`);
         return md.render(module.default);
     }
@@ -52,7 +60,7 @@ onMounted(async () => {
     articleContent.value = await loadArticle();
 
     if (articleExists.value) {
-        document.title = `${articles[articleId].seo.title} | Rokas Stankūnas`;
+        document.title = `${articleTitle.value} | Rokas Stankūnas`;
     } else {
         router.push('/404');
     }
@@ -62,11 +70,11 @@ onMounted(async () => {
     const canonicalLinkTag = document.querySelector('link[rel="canonical"]');
 
     if (descriptionMetaTag) {
-        descriptionMetaTag.setAttribute('content', `${articles[articleId].seo.description}`);
+        descriptionMetaTag.setAttribute('content', `${articleTitle.value}`);
     }
 
     if (keywordsMetaTag) {
-        keywordsMetaTag.setAttribute('content', articles[articleId].seo.keywords.join(', '));
+        keywordsMetaTag.setAttribute('content', articleKeywords.value.join(', '));
     }
 
     if (canonicalLinkTag) {
@@ -77,6 +85,13 @@ onMounted(async () => {
 
 <template>
     <Header>
+        <h1 class="text-3xl font-bold text-center">{{ articleTitle }}</h1>
+        <img class="mx-auto sm:w-1/2 md:w-1/3 w-full p-5" :src="`${articleImage}`" :alt="`${articleTitle} image`">
+        
+        <div class="flex flex-wrap gap-2 justify-center">
+            <span v-for="(keyword, index) in articleKeywords" :key="index" class="badge badge-outline">{{ keyword }}</span>
+        </div>
+        <p class="text-right italic">Created at {{ articleCreatedAt }}</p>
         <span class="markdown" v-html="articleContent"></span>
         <Footer></Footer>
     </Header>
