@@ -1,15 +1,30 @@
 ## Introduction
-In my [last article](./ldap-matrix), we have set up a private communication environment with the Matrix protocol. In this article, we will see how to set up a federation for a Matrix serever (Synapse).
+In my [last article](./ldap-matrix), we set up a private communication environment using the Matrix protocol. A crucial feature of Matrix is its ability to federate, allowing different Matrix servers to communicate seamlessly, making it suitable for both personal and collaborative environments. In this article, we will explore how to enable federation on a Matrix server (Synapse) and ensure proper configuration for secure and efficient communication.
+
+---
 
 ## Requirements
-This tutorial assumes Debian is used as the distribution of choice and the steps in my previous article were followed (having a fresh instance is sufficient). In order to follow this tutorial, you will need:
-- Server with root access;
-- [Docker compose](https://docs.docker.com/engine/install/debian/#install-using-the-repository);
-- [Working synapse container](https://hub.docker.com/r/matrixdotorg/synapse).
+To follow this guide, the following prerequisites should be met:
 
-## Setting up federation
+- A Debian-based system with root access.
+- A fully functioning [Synapse container](https://hub.docker.com/r/matrixdotorg/synapse).
+- [Docker Compose](https://docs.docker.com/engine/install/debian/#install-using-the-repository) installed.
+- Familiarity with basic command-line operations.
 
-The [documentation](https://element-hq.github.io/synapse/latest/federate.html) discusses the implementation. In our case, we'll use a slightly different approach. Firstly, enable federation in the `homeserver.yaml` file:
+If you haven’t yet set up a Synapse server, refer to the previous article for detailed steps. Starting with a fresh instance is recommended but not mandatory.
+
+---
+
+## What is Federation?
+Matrix federation enables different servers to interoperate, sharing data such as messages and profiles across domain boundaries. This decentralization is one of Matrix's strengths, providing users with more control over data while facilitating global communication. Setting up federation involves configuring Synapse and its proxy server (e.g., NGINX) appropriately.
+
+---
+
+## Setting up Federation
+
+### Step 1: Enable Federation in Synapse Configuration
+Locate the `homeserver.yaml` file for Synapse. By default, this file resides in the `/data` directory inside your container. Edit the file to enable federation by ensuring the following block is included:
+
 ```yaml
 listeners:
   - port: 8008
@@ -20,7 +35,12 @@ listeners:
       - names: [client, federation]
         compress: false
 ```
-Once this is updated, we need to update the NGINX configuration, to forward federation requests and also to tell other servers how to access our server. This configuration is slightly updated to also include SSL configuration. For ease of use, I recommend implementing [Cloudflare Origin certificates](https://developers.cloudflare.com/ssl/origin-configuration/).
+
+This allows the server to handle federation traffic on port `8008` while preserving client and federation-specific routes.
+
+### Step 2: Configure NGINX for Federation
+Next, we need to modify the NGINX configuration to handle federation requests and communicate the server's address to other Matrix instances. Add or update the NGINX configuration file for your Synapse server as follows:
+
 ```nginx
 server {
   listen 80;
@@ -37,8 +57,8 @@ server {
   server_name matrix.example.com;
 
   # SSL certificates and key
-  ssl_certificate <...>;
-  ssl_certificate_key <...>;
+  ssl_certificate /etc/ssl/certs/example-com.pem;
+  ssl_certificate_key /etc/ssl/private/example-com.key;
 
   # Block unauthorized requests to admin endpoint
   location /_synapse/admin {
@@ -67,10 +87,19 @@ server {
 }
 ```
 
-Once the changes are made, feel free to restart your NGINX and Synapse containers!
+Replace `matrix.example.com` with your actual domain name. Additionally, configure SSL certificates for secure connections. [Cloudflare Origin Certificates](https://developers.cloudflare.com/ssl/origin-configuration/) are a convenient option for SSL.
 
-## Adding a whitelist of other instances
-If you want to allow federation with other instances, you can add them to the whitelist in the `homeserver.yaml` file. This will allow only the listed instances to be federated with. [The documentation](https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html#federation) gives an example of how that can look like. Append the following to your configuration:
+Once updated, restart your NGINX and Synapse containers to apply changes:
+
+```bash
+docker-compose restart nginx synapse
+```
+
+---
+
+## Adding a Whitelist of Other Instances
+By default, a federated Matrix server communicates with all instances. However, you can restrict access by whitelisting specific domains. To configure this, append the following to your `homeserver.yaml` file:
+
 ```yaml
 whitelist_enabled: true
 federation_whitelist_endpoint_enabled: false
@@ -81,6 +110,26 @@ federation_domain_whitelist:
   - matrix.example2.com
 ```
 
-## Troubleshooting
+This configuration ensures your server interacts only with trusted instances, bolstering privacy and control.
 
-If you encounter any problems, the [federation testing tool](https://federationtester.matrix.org/) can help understand any other present errors.
+---
+
+## Troubleshooting
+If issues arise during configuration, the [Matrix Federation Tester](https://federationtester.matrix.org/) is an excellent tool to diagnose federation problems. Common issues include:
+
+- Missing or misconfigured `.well-known/matrix/server` records.
+- Invalid or absent SSL certificates.
+- Inconsistent NGINX proxy rules.
+
+Inspect logs from both Synapse and NGINX to identify potential errors:
+
+```bash
+docker-compose logs synapse nginx
+```
+
+---
+
+## Conclusion
+By following these steps, you now have a fully functional federated Matrix server. This setup opens up opportunities for secure, private, and decentralized communication while integrating seamlessly into the broader Matrix ecosystem. Explore additional configurations to further customize and optimize your server's capabilities.
+
+---

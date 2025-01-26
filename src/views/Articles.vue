@@ -34,7 +34,7 @@ onMounted(() => {
             Articles
         </h1>
         <p>
-            This pages is made to show my latest projects with various technologies. I use these texts as a reference. Click on each one to see more details.
+            This page is made to show my latest projects while tinkering with various technologies. I use these texts as a reference. Click on each one to see more details.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
             <div v-for="article in articles" :key="article.id" class="card w-full bg-base-100 shadow-xl">
