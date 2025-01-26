@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /about
+Disallow:
 
 Sitemap: https://stankunas.me/sitemap.xml
