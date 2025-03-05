@@ -22,7 +22,7 @@ onMounted(() => {
     }
 
     if (canonicalLinkTag) {
-        canonicalLinkTag.setAttribute('href', "https://stankunas.me/projects");
+        canonicalLinkTag.setAttribute('href', "https://stankunas.me/articles");
     }
 });
 
