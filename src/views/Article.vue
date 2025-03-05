@@ -78,7 +78,7 @@ onMounted(async () => {
     }
 
     if (canonicalLinkTag) {
-        canonicalLinkTag.setAttribute('href', `https://stankunas.me/project/${articles[articleId].id}`);
+        canonicalLinkTag.setAttribute('href', `https://stankunas.me/article/${articles[articleId].id}`);
     }
 });
 </script>
